@@ -31,3 +31,10 @@ Now call `/path/to/bin/docky.sh rebuild` from within your project root. `docky` 
 your image using the new version as a tag, tear down the old container and call
 your `docker_run.sh` script to rebuild the container preserving the previously
 assigned port.
+
+## See also
+
+To get much fancier and also integrate `systemd` within your stack take a look
+at [Geard](https://openshift.github.io/geard/) from the guys at OpenShift.
+`docky` just wants to deploy a fixed container set and can be easily replaced by
+`Geard`.
