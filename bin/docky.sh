@@ -9,6 +9,7 @@ rebuild() {
   export name=$(awk -F'(": "|  "|",)' '$2=="name"{print $3}' package.json)
   export version=$(awk -F'(": "|  "|",)' '$2=="version"{print $3}' package.json)
   export port=0
+  export initial=false
 
   containers=( $(docker ps|awk '$2~/^'$name:'/ {print $1}') )
   docker build -t $name:$version .
@@ -24,6 +25,7 @@ rebuild() {
 
   # Build at least one container.
   if [[ $container_count == 0 ]]; then
+    initial=true
     $SHELL $(pwd)/docker_run.sh
   fi
 }
